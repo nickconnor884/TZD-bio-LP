@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Biocompatible & Metal-Free Dentistry — TranZenDental</title>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+@font-face { font-family: 'Playfair Display'; src: url('fonts/PlayfairDisplay-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Cabin'; src: url('fonts/Cabin-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Cabin'; src: url('fonts/Cabin-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: hsl(168, 45%, 32%);
+  --primary-light: hsl(168, 45%, 42%);
+  --primary-dark: hsl(168, 45%, 22%);
+  --primary-muted: hsl(168, 45%, 32%, 0.08);
+  --accent: hsl(35, 50%, 72%);
+  --accent-deep: hsl(35, 45%, 55%);
+  --secondary: hsl(35, 45%, 85%);
+  --secondary-tint: hsl(35, 45%, 90%, 0.45);
+  --bg: hsl(35, 30%, 97%);
+  --bg-pure: hsl(0, 0%, 100%);
+  --fg: hsl(220, 18%, 14%);
+  --fg-soft: hsl(220, 12%, 32%);
+  --muted: hsl(220, 10%, 94%);
+  --muted-fg: hsl(220, 10%, 42%);
+  --border: hsl(220, 10%, 88%);
+  --border-soft: hsl(35, 25%, 88%);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Cabin', 'Helvetica Neue', Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img, svg { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+button { font: inherit; cursor: pointer; border: none; background: none; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.container-narrow { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+/* ── TYPE ── */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--primary);
+}
+.eyebrow::before {
+  content: ""; width: 24px; height: 1px; background: currentColor;
+}
+.eyebrow.no-line::before { display: none; }
+.eyebrow.on-dark { color: var(--accent); }
+
+.h-display {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(38px, 5.4vw, 68px); line-height: 1.05;
+  letter-spacing: -0.022em; text-wrap: balance;
+}
+.h1 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(34px, 4.4vw, 54px); line-height: 1.1;
+  letter-spacing: -0.02em; text-wrap: balance;
+}
+.h2 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15;
+  letter-spacing: -0.018em; text-wrap: balance;
+}
+.h3 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: 22px; line-height: 1.3; letter-spacing: -0.01em;
+}
+.lede { font-size: 18px; line-height: 1.65; color: var(--fg-soft); text-wrap: pretty; max-width: 60ch; }
+.body { font-size: 16px; line-height: 1.7; color: var(--fg-soft); }
+.body-sm { font-size: 14px; line-height: 1.6; color: var(--muted-fg); }
+.serif-italic { font-family: var(--serif); font-style: italic; }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--sans); font-size: 15px; font-weight: 500;
+  border-radius: 6px; padding: 0 22px; height: 50px;
+  transition: all 0.2s ease; white-space: nowrap;
+  letter-spacing: 0.005em;
+}
+.btn-lg { height: 56px; padding: 0 28px; font-size: 15.5px; }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-light); transform: translateY(-1px); }
+.btn-outline { background: transparent; color: var(--fg); border: 1.5px solid var(--border); }
+.btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+.btn-outline-light { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); }
+.btn-outline-light:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.7); }
+.btn-arrow { transition: transform 0.2s ease; }
+.btn:hover .btn-arrow { transform: translateX(3px); }
+.btn-group { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* ── HEADER ── */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(252, 250, 246, 0.85);
+  backdrop-filter: saturate(140%) blur(14px);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  border-bottom: 1px solid rgba(220, 210, 195, 0.4);
+}
+.header-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 28px;
+  height: 72px; display: flex; align-items: center; justify-content: space-between;
+}
+.header-logo img { height: 38px; width: auto; }
+.header-right { display: flex; align-items: center; gap: 28px; }
+.header-phone {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; color: var(--fg-soft); font-weight: 500;
+}
+.header-phone:hover { color: var(--primary); }
+.header-phone svg { color: var(--primary); }
+.header-cta { height: 42px; padding: 0 18px; font-size: 14px; }
+
+@media (max-width: 720px) {
+  .header-phone-text { display: none; }
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative; padding-top: 72px; overflow: hidden;
+  background: linear-gradient(180deg, hsl(35, 30%, 97%) 0%, hsl(35, 28%, 94%) 100%);
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1.05fr 1fr;
+  gap: 64px; align-items: center;
+  padding: 84px 0 100px;
+}
+.hero-trust-line {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 28px;
+  font-size: 13px; color: var(--fg-soft);
+}
+.hero-trust-line .stars { display: flex; gap: 2px; color: var(--accent-deep); }
+.hero-trust-line .divider { width: 1px; height: 14px; background: var(--border); }
+.hero-headline { margin-bottom: 22px; }
+.hero-headline em { font-style: italic; color: var(--primary); }
+.hero-sub { font-size: 19px; line-height: 1.6; color: var(--fg-soft); margin-bottom: 14px; max-width: 56ch; }
+.hero-support { font-size: 15px; color: var(--muted-fg); margin-bottom: 36px; max-width: 50ch; }
+.hero-ctas { margin-bottom: 40px; }
+.hero-trust-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px;
+  padding-top: 28px; border-top: 1px solid var(--border-soft);
+}
+.hero-trust-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13.5px; color: var(--fg-soft);
+}
+.hero-trust-item svg { color: var(--primary); flex-shrink: 0; }
+
+/* Hero visual collage */
+.hero-visual {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  max-width: 540px; margin-left: auto;
+}
+.hero-img-main {
+  position: absolute; inset: 0;
+  border-radius: 8px; overflow: hidden;
+  background: var(--muted);
+}
+.hero-img-main img { width: 100%; height: 100%; object-fit: cover; }
+.hero-card {
+  position: absolute;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  padding: 18px 20px;
+  box-shadow: 0 18px 40px -18px rgba(40, 30, 20, 0.18);
+}
+.hero-card-tl {
+  top: 24px; left: -32px;
+  display: flex; align-items: center; gap: 12px;
+  min-width: 220px;
+}
+.hero-card-tl .icon-circle {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--primary-muted); color: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.hero-card-tl .label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-fg); margin-bottom: 2px; }
+.hero-card-tl .value { font-family: var(--serif); font-size: 16px; color: var(--fg); }
+
+.hero-card-br {
+  bottom: 28px; right: -28px;
+  width: 240px;
+}
+.hero-card-br .meta { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted-fg); margin-bottom: 8px; letter-spacing: 0.1em; text-transform: uppercase; }
+.hero-card-br .meta-dot { width: 6px; height: 6px; border-radius: 50%; background: hsl(140, 50%, 45%); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+.hero-card-br .quote { font-family: var(--serif); font-size: 15px; line-height: 1.4; color: var(--fg); font-style: italic; margin-bottom: 10px; }
+.hero-card-br .author { font-size: 12px; color: var(--muted-fg); }
+
+.hero-decorative {
+  position: absolute; top: -80px; right: -120px;
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, hsla(168, 45%, 70%, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; padding: 56px 0 72px; }
+  .hero-visual { max-width: 460px; margin: 0 auto; }
+  .hero-card-tl { left: 16px; }
+  .hero-card-br { right: 16px; }
+}
+@media (max-width: 520px) {
+  .hero-trust-grid { grid-template-columns: 1fr; }
+  .hero-card-tl { left: -8px; padding: 14px; min-width: auto; }
+  .hero-card-br { right: -8px; width: 200px; }
+}
+
+/* ── SECTIONS ── */
+.section { padding: 110px 0; }
+.section-tight { padding: 84px 0; }
+.section-tinted { background: linear-gradient(180deg, var(--bg) 0%, hsl(35, 35%, 95%) 100%); }
+.section-cream { background: hsl(35, 40%, 94%); }
+.section-dark { background: var(--fg); color: #fff; }
+
+.section-header { max-width: 760px; margin-bottom: 64px; }
+.section-header.center { margin-left: auto; margin-right: auto; text-align: center; }
+.section-header .eyebrow { margin-bottom: 18px; }
+.section-header h2 { margin-bottom: 22px; }
+
+/* ── PROBLEM SECTION ── */
+.problem-grid {
+  display: grid; grid-template-columns: 1.1fr 1fr;
+  gap: 80px; align-items: start;
+}
+.problem-want-list {
+  list-style: none;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px;
+  margin: 28px 0;
+}
+.problem-want-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 15px; color: var(--fg-soft); line-height: 1.5;
+  padding: 10px 0;
+  border-top: 1px solid var(--border-soft);
+}
+.problem-want-list li:nth-child(1), .problem-want-list li:nth-child(2) { border-top: none; }
+.problem-want-list li::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--primary); margin-top: 9px; flex-shrink: 0;
+}
+.problem-quote {
+  position: relative;
+  padding: 36px 36px 36px 40px;
+  background: var(--bg-pure);
+  border-radius: 4px;
+  border-left: 3px solid var(--accent);
+}
+.problem-quote-mark {
+  font-family: var(--serif); font-size: 80px; line-height: 0.6;
+  color: var(--accent); position: absolute;
+  top: 28px; left: 24px; opacity: 0.4;
+}
+.problem-quote-text {
+  font-family: var(--serif); font-size: 22px; line-height: 1.4;
+  color: var(--fg); font-style: italic;
+  position: relative; z-index: 1; padding-left: 18px;
+}
+.problem-quote-attr {
+  margin-top: 18px; font-size: 13px; color: var(--muted-fg);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding-left: 18px;
+}
+
+@media (max-width: 880px) {
+  .problem-grid { grid-template-columns: 1fr; gap: 48px; }
+  .problem-want-list { grid-template-columns: 1fr; }
+}
+
+/* ── DIFFERENT (Features) SECTION ── */
+.features-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border-soft);
+  border: 1px solid var(--border-soft); border-radius: 4px;
+  overflow: hidden;
+}
+.feature-card {
+  background: var(--bg-pure);
+  padding: 40px 36px;
+  display: flex; flex-direction: column;
+  transition: background 0.3s ease;
+}
+.feature-card:hover { background: hsl(35, 40%, 97%); }
+.feature-num {
+  font-family: var(--serif); font-size: 14px;
+  color: var(--accent-deep); margin-bottom: 28px;
+  letter-spacing: 0.08em;
+}
+.feature-icon {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--primary-muted);
+  color: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 22px;
+}
+.feature-card h3 { margin-bottom: 12px; }
+.feature-card p { font-size: 15px; line-height: 1.6; color: var(--fg-soft); }
+
+@media (max-width: 880px) {
+  .features-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .features-grid { grid-template-columns: 1fr; }
+}
+
+/* ── WHO THIS IS FOR ── */
+.who-section {
+  background: var(--fg);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.who-section .eyebrow { color: var(--accent); }
+.who-section h2 { color: #fff; }
+.who-grid {
+  display: grid; grid-template-columns: 1fr 1.2fr;
+  gap: 80px; align-items: center;
+}
+.who-section .lede { color: rgba(255,255,255,0.7); }
+.who-checklist {
+  display: grid; grid-template-columns: 1fr;
+  gap: 0;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.who-check-item {
+  display: flex; align-items: center; gap: 16px;
+  padding: 18px 24px;
+  font-size: 16px; line-height: 1.5;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.92);
+}
+.who-check-item:last-child { border-bottom: none; }
+.who-check-item .check-icon {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: hsla(168, 45%, 50%, 0.15);
+  color: hsl(168, 45%, 60%);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 880px) {
+  .who-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* ── SERVICES ── */
+.services-list {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--border-soft);
+}
+.service-row {
+  display: flex; align-items: center; gap: 18px;
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--border-soft);
+  transition: background 0.2s ease, padding 0.2s ease;
+  cursor: default;
+}
+.service-row:nth-child(odd) { border-right: 1px solid var(--border-soft); }
+.service-row:hover { background: rgba(201, 164, 129, 0.08); padding-left: 30px; }
+.service-num {
+  font-family: var(--serif); font-size: 13px;
+  color: var(--accent-deep); width: 28px; flex-shrink: 0;
+  letter-spacing: 0.06em;
+}
+.service-name {
+  font-family: var(--serif); font-size: 19px;
+  color: var(--fg); flex: 1; line-height: 1.3;
+}
+.service-row .service-arrow {
+  color: var(--primary); opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.service-row:hover .service-arrow { opacity: 1; transform: translateX(2px); }
+
+@media (max-width: 720px) {
+  .services-list { grid-template-columns: 1fr; }
+  .service-row:nth-child(odd) { border-right: none; }
+}
+
+/* ── ASSESSMENT ── */
+.assessment-section { background: hsl(35, 40%, 94%); }
+.assessment-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.assessment-image {
+  position: relative; aspect-ratio: 5 / 6;
+  border-radius: 4px; overflow: hidden;
+  background: var(--muted);
+}
+.assessment-image img { width: 100%; height: 100%; object-fit: cover; }
+.assessment-image-tag {
+  position: absolute; top: 24px; left: 24px;
+  background: rgba(255,255,255,0.95);
+  padding: 10px 16px; border-radius: 4px;
+  font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--primary); font-weight: 500;
+}
+.assessment-image-price {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(20,20,20,0.85) 80%);
+  padding: 60px 28px 24px;
+  color: #fff;
+}
+.assessment-image-price .label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; margin-bottom: 6px; }
+.assessment-image-price .price-row { display: flex; align-items: baseline; gap: 12px; }
+.assessment-image-price .price { font-family: var(--serif); font-size: 38px; line-height: 1; }
+.assessment-image-price .desc { font-size: 13px; opacity: 0.8; }
+
+.assessment-bullets {
+  list-style: none; margin: 24px 0 32px;
+}
+.assessment-bullets li {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--border-soft);
+  font-size: 16px; color: var(--fg-soft); line-height: 1.5;
+}
+.assessment-bullets li:last-child { border-bottom: none; }
+.assessment-bullets li .num {
+  font-family: var(--serif); font-size: 13px;
+  color: var(--accent-deep); flex-shrink: 0;
+  margin-top: 4px; width: 22px;
+}
+
+.includes-card {
+  background: var(--bg-pure); border-radius: 6px;
+  padding: 28px; border: 1px solid var(--border-soft);
+  margin: 32px 0;
+}
+.includes-card-head { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary); font-weight: 500; margin-bottom: 16px; }
+.includes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.includes-grid li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: var(--fg-soft); line-height: 1.5;
+}
+.includes-grid li svg { color: var(--primary); flex-shrink: 0; margin-top: 3px; }
+
+@media (max-width: 880px) {
+  .assessment-grid { grid-template-columns: 1fr; gap: 48px; }
+  .assessment-image { max-width: 480px; margin: 0 auto; aspect-ratio: 4 / 5; }
+  .includes-grid { grid-template-columns: 1fr; }
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials-row {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 28px; margin-top: 16px;
+}
+.testimonial-card {
+  background: var(--bg-pure);
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  padding: 32px 28px;
+  display: flex; flex-direction: column;
+  gap: 18px;
+}
+.testimonial-stars {
+  display: flex; gap: 2px; color: var(--accent-deep);
+}
+.testimonial-quote {
+  font-family: var(--serif); font-size: 19px;
+  line-height: 1.45; color: var(--fg);
+  text-wrap: pretty;
+  flex: 1;
+}
+.testimonial-author {
+  display: flex; align-items: center; gap: 14px;
+  padding-top: 18px; border-top: 1px solid var(--border-soft);
+}
+.testimonial-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--secondary));
+  color: var(--primary-dark);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 16px;
+  flex-shrink: 0;
+}
+.testimonial-author .name { font-size: 14px; font-weight: 500; color: var(--fg); }
+.testimonial-author .meta { font-size: 12px; color: var(--muted-fg); }
+
+.review-summary {
+  display: flex; align-items: center; justify-content: center;
+  gap: 32px; margin-top: 56px;
+  padding: 24px 36px;
+  background: var(--bg-pure);
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  max-width: 720px; margin-left: auto; margin-right: auto;
+  flex-wrap: wrap;
+}
+.review-summary-item { display: flex; align-items: center; gap: 12px; }
+.review-summary .num { font-family: var(--serif); font-size: 32px; color: var(--fg); line-height: 1; }
+.review-summary .label { font-size: 12px; color: var(--muted-fg); letter-spacing: 0.06em; line-height: 1.3; }
+.review-summary .divider { width: 1px; height: 32px; background: var(--border); }
+
+@media (max-width: 880px) {
+  .testimonials-row { grid-template-columns: 1fr; }
+  .review-summary { flex-direction: column; gap: 16px; }
+  .review-summary .divider { display: none; }
+}
+
+/* ── DOCTOR ── */
+.doctor-section { background: hsl(35, 40%, 94%); }
+.doctor-grid {
+  display: grid; grid-template-columns: 0.85fr 1.15fr;
+  gap: 80px; align-items: center;
+}
+.doctor-image {
+  position: relative; aspect-ratio: 4 / 5;
+  background: var(--bg-pure); border-radius: 4px; overflow: hidden;
+  border: 1px solid var(--border-soft);
+}
+.doctor-image img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.doctor-name-band {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 22px 26px;
+  background: rgba(252, 250, 246, 0.95);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid var(--border-soft);
+}
+.doctor-name { font-family: var(--serif); font-size: 22px; color: var(--fg); margin-bottom: 4px; }
+.doctor-title { font-size: 13px; color: var(--muted-fg); letter-spacing: 0.04em; }
+
+.doctor-philosophy {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 14px 28px;
+  margin-top: 28px;
+}
+.doctor-philosophy li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 15px; color: var(--fg-soft); line-height: 1.5;
+  list-style: none;
+}
+.doctor-philosophy svg { color: var(--primary); flex-shrink: 0; margin-top: 3px; }
+
+@media (max-width: 880px) {
+  .doctor-grid { grid-template-columns: 1fr; gap: 48px; }
+  .doctor-image { max-width: 420px; margin: 0 auto; }
+  .doctor-philosophy { grid-template-columns: 1fr; }
+}
+
+/* ── FAQ ── */
+.faq-list {
+  border-top: 1px solid var(--border-soft);
+  max-width: 820px; margin: 0 auto;
+}
+.faq-item {
+  border-bottom: 1px solid var(--border-soft);
+}
+.faq-q {
+  width: 100%; text-align: left;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; padding: 26px 0;
+  font-family: var(--serif); font-size: 20px;
+  color: var(--fg); line-height: 1.35;
+  transition: color 0.2s ease;
+}
+.faq-q:hover { color: var(--primary); }
+.faq-icon {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--primary-muted); color: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, background 0.2s ease;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); background: var(--primary); color: #fff; }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+.faq-item.open .faq-a { max-height: 400px; padding-bottom: 26px; }
+.faq-a-inner {
+  font-size: 16px; line-height: 1.7; color: var(--fg-soft);
+  padding-right: 56px; max-width: 65ch;
+}
+
+/* ── FINAL CTA ── */
+.final-cta {
+  background: var(--primary);
+  color: #fff;
+  position: relative; overflow: hidden;
+  text-align: center;
+  padding: 120px 0;
+}
+.final-cta::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 20%, hsla(35, 50%, 72%, 0.18) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 80%, hsla(168, 45%, 60%, 0.25) 0%, transparent 50%);
+  pointer-events: none;
+}
+.final-cta .container-narrow { position: relative; }
+.final-cta .eyebrow { color: var(--accent); margin-bottom: 22px; }
+.final-cta h2 { color: #fff; margin-bottom: 22px; }
+.final-cta .sub {
+  font-size: 19px; line-height: 1.5;
+  color: rgba(255,255,255,0.85); margin-bottom: 40px;
+  text-wrap: balance;
+}
+.final-cta .btn-group { justify-content: center; margin-bottom: 32px; }
+.final-cta .btn-primary { background: var(--accent); color: var(--fg); }
+.final-cta .btn-primary:hover { background: hsl(35, 50%, 80%); }
+.final-cta .support-line {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 14px; color: rgba(255,255,255,0.7);
+}
+.final-cta .support-line svg { color: var(--accent); }
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--fg);
+  color: rgba(255,255,255,0.7);
+  padding: 64px 0 32px;
+  font-size: 14px;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 48px;
+}
+.footer-logo { height: 36px; filter: brightness(0) invert(1); margin-bottom: 18px; }
+.footer-tag { line-height: 1.6; max-width: 32ch; color: rgba(255,255,255,0.55); margin-bottom: 18px; }
+.footer h4 { font-family: var(--serif); font-size: 15px; color: #fff; margin-bottom: 18px; font-weight: 400; letter-spacing: 0.02em; }
+.footer ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer ul a { color: rgba(255,255,255,0.6); transition: color 0.2s ease; }
+.footer ul a:hover { color: var(--accent); }
+.footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+.footer-contact-item svg { color: var(--accent); flex-shrink: 0; margin-top: 3px; }
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 13px; color: rgba(255,255,255,0.5);
+  flex-wrap: wrap; gap: 12px;
+}
+
+@media (max-width: 880px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+@media (max-width: 520px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* ── STICKY MOBILE CTA ── */
+.sticky-mobile-cta {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 90; padding: 12px 16px;
+  background: rgba(252, 250, 246, 0.96);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border-soft);
+  display: none;
+}
+.sticky-mobile-cta .btn { width: 100%; justify-content: center; }
+@media (max-width: 720px) {
+  .sticky-mobile-cta { display: block; }
+  body { padding-bottom: 80px; }
+}
+
+/* ── UTILS ── */
+[data-fade] { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+[data-fade].in { opacity: 1; transform: translateY(0); }
+.icon-sm { width: 16px; height: 16px; }
+.icon-md { width: 20px; height: 20px; }
+.icon-lg { width: 22px; height: 22px; }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="header-logo" aria-label="TranZenDental">
+      <img src="assets/logo.png" alt="TranZenDental" />
+    </a>
+    <div class="header-right">
+      <a href="tel:5616919498" class="header-phone">
+        <i data-lucide="phone" class="icon-sm"></i>
+        <span class="header-phone-text">(561) 691-9498</span>
+      </a>
+      <a href="#book" class="btn btn-primary header-cta">
+        Book Assessment
+        <i data-lucide="arrow-right" class="icon-sm btn-arrow"></i>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero" data-screen-label="01 Hero">
+  <div class="hero-decorative" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="hero-trust-line">
+          <div class="stars" aria-label="4.8 stars">
+            <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+            <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+            <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+            <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+            <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+          </div>
+          <span><strong style="color: var(--fg); font-weight: 500;">4.8</strong> · 178+ Google reviews</span>
+          <span class="divider"></span>
+          <span>North Palm Beach, FL</span>
+        </div>
+
+        <div class="eyebrow no-line" style="margin-bottom: 20px;">Biocompatible &amp; Metal-Free Dentistry</div>
+
+        <h1 class="h-display hero-headline">
+          Modern dentistry designed for your <em>whole body</em> — not just your teeth.
+        </h1>
+
+        <p class="hero-sub">
+          Biocompatible, metal-free, holistic dental care using advanced diagnostics, ceramic restorations, ozone therapy, and personalized treatment planning.
+        </p>
+        <p class="hero-support">
+          For patients seeking a healthier, more aesthetic, and more modern approach to dentistry.
+        </p>
+
+        <div class="btn-group hero-ctas">
+          <a href="#book" class="btn btn-primary btn-lg">
+            Book Your Oral-Body Assessment
+            <i data-lucide="arrow-right" class="icon-md btn-arrow"></i>
+          </a>
+          <a href="#different" class="btn btn-outline btn-lg">
+            Explore Metal-Free Dentistry
+          </a>
+        </div>
+
+        <div class="hero-trust-grid">
+          <div class="hero-trust-item">
+            <i data-lucide="shield-check" class="icon-md"></i>
+            <span>SMART mercury-safe protocols</span>
+          </div>
+          <div class="hero-trust-item">
+            <i data-lucide="sparkles" class="icon-md"></i>
+            <span>Metal-free ceramic restorations</span>
+          </div>
+          <div class="hero-trust-item">
+            <i data-lucide="scan-line" class="icon-md"></i>
+            <span>Advanced 3D imaging &amp; diagnostics</span>
+          </div>
+          <div class="hero-trust-item">
+            <i data-lucide="moon" class="icon-md"></i>
+            <span>IV sedation available</span>
+          </div>
+          <div class="hero-trust-item">
+            <i data-lucide="leaf" class="icon-md"></i>
+            <span>Holistic &amp; cosmetic approach</span>
+          </div>
+          <div class="hero-trust-item">
+            <i data-lucide="user-check" class="icon-md"></i>
+            <span>Personalized treatment planning</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-img-main">
+          <img src="assets/hero-dental.jpg" alt="Calm, modern TranZenDental treatment room" />
+        </div>
+
+        <div class="hero-card hero-card-tl">
+          <div class="icon-circle">
+            <i data-lucide="shield-check" class="icon-md"></i>
+          </div>
+          <div>
+            <div class="label">SMART Certified</div>
+            <div class="value">Mercury-safe removal</div>
+          </div>
+        </div>
+
+        <div class="hero-card hero-card-br">
+          <div class="meta">
+            <span class="meta-dot"></span>
+            <span>New patient story</span>
+          </div>
+          <div class="quote">"Finally a dental practice that listens — and looks at the whole picture."</div>
+          <div class="author">— Sandra K., verified patient</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROBLEM ── -->
+<section class="section section-tinted" data-screen-label="02 Problem">
+  <div class="container">
+    <div class="problem-grid">
+      <div>
+        <div class="eyebrow" style="margin-bottom: 18px;">The Shift In Dentistry</div>
+        <h2 class="h1" style="margin-bottom: 24px;">Many patients want more than traditional dentistry.</h2>
+        <p class="lede">
+          More people today are questioning the materials used in their dental care and looking for a more holistic, biocompatible approach.
+        </p>
+
+        <div style="margin-top: 32px;">
+          <div class="body-sm" style="font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary); font-weight: 500; margin-bottom: 18px;">They want:</div>
+          <ul class="problem-want-list">
+            <li>Metal-free restorations</li>
+            <li>More modern materials</li>
+            <li>Aesthetic, natural-looking dentistry</li>
+            <li>Safer protocols for amalgam removal</li>
+            <li>Whole-body wellness consideration</li>
+            <li>A calmer, more personalized experience</li>
+          </ul>
+        </div>
+
+        <p class="body" style="margin-top: 12px; max-width: 58ch;">
+          At TranZenDental, we combine advanced modern dentistry with a holistic philosophy focused on long-term health, aesthetics, comfort, and patient-centered care.
+        </p>
+      </div>
+
+      <div class="problem-quote">
+        <div class="problem-quote-mark">"</div>
+        <div class="problem-quote-text">
+          Your mouth is your health alert. We treat it like the front door to the rest of the body.
+        </div>
+        <div class="problem-quote-attr">— Practice Philosophy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DIFFERENT ── -->
+<section class="section" id="different" data-screen-label="03 Different">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">What Makes Us Different</div>
+      <h2 class="h1">A more advanced and biocompatible approach to dentistry.</h2>
+      <p class="lede">
+        Six pillars that define how we practice — each designed around safer materials, smarter diagnostics, and a calmer experience.
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <article class="feature-card">
+        <div class="feature-num">01 / 06</div>
+        <div class="feature-icon"><i data-lucide="gem" class="icon-lg"></i></div>
+        <h3 class="h3">Metal-Free Restorations</h3>
+        <p>High-quality ceramic and biocompatible materials designed for aesthetics, durability, and a more natural dental experience.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-num">02 / 06</div>
+        <div class="feature-icon"><i data-lucide="shield-check" class="icon-lg"></i></div>
+        <h3 class="h3">SMART Amalgam Removal</h3>
+        <p>For patients replacing old silver fillings, we follow advanced safety protocols designed to minimize exposure during removal.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-num">03 / 06</div>
+        <div class="feature-icon"><i data-lucide="droplets" class="icon-lg"></i></div>
+        <h3 class="h3">Ozone &amp; Biological Approaches</h3>
+        <p>We incorporate ozone and modern biological principles to support cleaner, more conservative care.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-num">04 / 06</div>
+        <div class="feature-icon"><i data-lucide="scan-line" class="icon-lg"></i></div>
+        <h3 class="h3">3D Diagnostics &amp; Digital Planning</h3>
+        <p>Advanced CBCT imaging and digital treatment planning let us create a highly personalized treatment strategy.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-num">05 / 06</div>
+        <div class="feature-icon"><i data-lucide="sparkles" class="icon-lg"></i></div>
+        <h3 class="h3">Cosmetic + Holistic Integration</h3>
+        <p>Beautiful smiles and whole-body thinking do not have to be separate. We design treatment around both.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-num">06 / 06</div>
+        <div class="feature-icon"><i data-lucide="moon" class="icon-lg"></i></div>
+        <h3 class="h3">Sedation &amp; Anxiety Support</h3>
+        <p>IV sedation is available for patients who want a calmer, more comfortable experience from start to finish.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHO THIS IS FOR ── -->
+<section class="section who-section" data-screen-label="04 Who">
+  <div class="container">
+    <div class="who-grid">
+      <div>
+        <div class="eyebrow" style="margin-bottom: 22px;">Who This Is For</div>
+        <h2 class="h1" style="margin-bottom: 24px;">This may be right for you if…</h2>
+        <p class="lede">
+          Most of our patients arrive with a feeling that something about traditional dentistry doesn't quite fit. If any of these resonate, we should talk.
+        </p>
+        <div style="margin-top: 32px;">
+          <a href="#book" class="btn btn-primary btn-lg">
+            Book Your Assessment
+            <i data-lucide="arrow-right" class="icon-md btn-arrow"></i>
+          </a>
+        </div>
+      </div>
+
+      <ul class="who-checklist">
+        <li class="who-check-item">
+          <span class="check-icon"><i data-lucide="check" class="icon-sm"></i></span>
+          <span>You prefer metal-free dental materials</span>
+        </li>
+        <li class="who-check-item">
+          <span class="check-icon"><i data-lucide="check" class="icon-sm"></i></span>
+          <span>You're concerned about older silver amalgam fillings</span>
+        </li>
+        <li class="who-check-item">
+          <span class="check-icon"><i data-lucide="check" class="icon-sm"></i></span>
+          <span>You want more modern cosmetic and restorative options</span>
+        </li>
+        <li class="who-check-item">
+          <span class="check-icon"><i data-lucide="check" class="icon-sm"></i></span>
+          <span>You value a more holistic approach to healthcare</span>
+        </li>
+        <li class="who-check-item">
+          <span class="check-icon"><i data-lucide="check" class="icon-sm"></i></span>
+          <span>You're interested in zirconia or ceramic restorations</span>
+        </li>
+        <li class="who-check-item">
+          <span class="check-icon"><i data-lucide="check" class="icon-sm"></i></span>
+          <span>You have dental anxiety and want a more supportive experience</span>
+        </li>
+        <li class="who-check-item">
+          <span class="check-icon"><i data-lucide="check" class="icon-sm"></i></span>
+          <span>You want dentistry designed around long-term wellness and aesthetics</span>
+        </li>
+        <li class="who-check-item">
+          <span class="check-icon"><i data-lucide="check" class="icon-sm"></i></span>
+          <span>You're looking for a more personalized level of care</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="section section-cream" data-screen-label="05 Services">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Services Included</div>
+      <h2 class="h1">Biocompatible &amp; holistic dental services.</h2>
+      <p class="lede">
+        Everything we offer is built on the same principles: safer materials, conservative planning, and a calmer experience.
+      </p>
+    </div>
+
+    <div class="services-list">
+      <div class="service-row">
+        <span class="service-num">01</span>
+        <span class="service-name">Ceramic crowns &amp; restorations</span>
+        <i data-lucide="arrow-up-right" class="icon-md service-arrow"></i>
+      </div>
+      <div class="service-row">
+        <span class="service-num">02</span>
+        <span class="service-name">Metal-free dentistry</span>
+        <i data-lucide="arrow-up-right" class="icon-md service-arrow"></i>
+      </div>
+      <div class="service-row">
+        <span class="service-num">03</span>
+        <span class="service-name">SMART amalgam filling removal</span>
+        <i data-lucide="arrow-up-right" class="icon-md service-arrow"></i>
+      </div>
+      <div class="service-row">
+        <span class="service-num">04</span>
+        <span class="service-name">Zirconia implant options</span>
+        <i data-lucide="arrow-up-right" class="icon-md service-arrow"></i>
+      </div>
+      <div class="service-row">
+        <span class="service-num">05</span>
+        <span class="service-name">Ozone therapy</span>
+        <i data-lucide="arrow-up-right" class="icon-md service-arrow"></i>
+      </div>
+      <div class="service-row">
+        <span class="service-num">06</span>
+        <span class="service-name">Cosmetic smile enhancement</span>
+        <i data-lucide="arrow-up-right" class="icon-md service-arrow"></i>
+      </div>
+      <div class="service-row">
+        <span class="service-num">07</span>
+        <span class="service-name">Full-mouth rehabilitation</span>
+        <i data-lucide="arrow-up-right" class="icon-md service-arrow"></i>
+      </div>
+      <div class="service-row">
+        <span class="service-num">08</span>
+        <span class="service-name">Biological treatment planning</span>
+        <i data-lucide="arrow-up-right" class="icon-md service-arrow"></i>
+      </div>
+      <div class="service-row">
+        <span class="service-num">09</span>
+        <span class="service-name">Sedation dentistry</span>
+        <i data-lucide="arrow-up-right" class="icon-md service-arrow"></i>
+      </div>
+      <div class="service-row">
+        <span class="service-num">10</span>
+        <span class="service-name">Advanced diagnostics &amp; CBCT imaging</span>
+        <i data-lucide="arrow-up-right" class="icon-md service-arrow"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ASSESSMENT ── -->
+<section class="section assessment-section" id="book" data-screen-label="06 Assessment">
+  <div class="container">
+    <div class="assessment-grid">
+      <div class="assessment-image">
+        <img src="assets/holistic-image.png" alt="Dr. Leconte performing an integrative oral-body assessment" />
+        <div class="assessment-image-tag">The Starting Point</div>
+        <div class="assessment-image-price">
+          <div class="label">Integrative Oral-Body Assessment</div>
+          <div class="price-row">
+            <div class="price">$240</div>
+            <div class="desc">Comprehensive · ~75 min</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="eyebrow" style="margin-bottom: 18px;">The Assessment</div>
+        <h2 class="h1" style="margin-bottom: 22px;">Start with an integrative oral-body assessment.</h2>
+        <p class="lede" style="margin-bottom: 8px;">Every patient is different. Your assessment is designed to help us understand:</p>
+
+        <ul class="assessment-bullets">
+          <li><span class="num">01</span><span>Your current oral health</span></li>
+          <li><span class="num">02</span><span>Existing dental materials and restorations</span></li>
+          <li><span class="num">03</span><span>Functional and aesthetic concerns</span></li>
+          <li><span class="num">04</span><span>Potential areas of inflammation or instability</span></li>
+          <li><span class="num">05</span><span>Cosmetic goals</span></li>
+          <li><span class="num">06</span><span>Long-term treatment priorities</span></li>
+        </ul>
+
+        <p class="body" style="margin-bottom: 0;">We then create a personalized roadmap designed specifically for you.</p>
+
+        <div class="includes-card">
+          <div class="includes-card-head">Your assessment includes</div>
+          <ul class="includes-grid">
+            <li><i data-lucide="check" class="icon-sm"></i><span>Comprehensive exam</span></li>
+            <li><i data-lucide="check" class="icon-sm"></i><span>Advanced imaging &amp; diagnostics</span></li>
+            <li><i data-lucide="check" class="icon-sm"></i><span>Material &amp; restoration review</span></li>
+            <li><i data-lucide="check" class="icon-sm"></i><span>Personalized treatment discussion</span></li>
+            <li><i data-lucide="check" class="icon-sm"></i><span>Cosmetic &amp; wellness planning</span></li>
+            <li><i data-lucide="check" class="icon-sm"></i><span>Written treatment roadmap</span></li>
+          </ul>
+        </div>
+
+        <div class="btn-group">
+          <a href="https://dental4.me/tranzendental/1" class="btn btn-primary btn-lg">
+            Book Your Assessment
+            <i data-lucide="arrow-right" class="icon-md btn-arrow"></i>
+          </a>
+          <a href="tel:5616919498" class="btn btn-outline btn-lg">
+            <i data-lucide="phone" class="icon-sm"></i>
+            (561) 691-9498
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="section" data-screen-label="07 Testimonials">
+  <div class="container">
+    <div class="section-header center">
+      <div class="eyebrow">Patient Stories</div>
+      <h2 class="h1">A more modern dental experience.</h2>
+      <p class="lede" style="margin-left: auto; margin-right: auto;">
+        Patients often tell us this feels different from any dentistry they've experienced before — calmer, more thoughtful, and more aligned with how they think about their health.
+      </p>
+    </div>
+
+    <div class="testimonials-row">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+          <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+          <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+          <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+          <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+        </div>
+        <div class="testimonial-quote">"I finally found a practice that takes my health seriously — and didn't push me. The amalgam removal felt incredibly safe, and my smile looks more natural than I imagined."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SK</div>
+          <div>
+            <div class="name">Sandra K.</div>
+            <div class="meta">Patient since 2024 · Palm Beach Gardens</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+          <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+          <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+          <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+          <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+        </div>
+        <div class="testimonial-quote">"Years of dental anxiety, gone in one visit. The team explained everything, the sedation was gentle, and I left feeling cared for — not processed."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MT</div>
+          <div>
+            <div class="name">Michael T.</div>
+            <div class="meta">Verified Google review · 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+          <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+          <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+          <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+          <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+        </div>
+        <div class="testimonial-quote">"My ceramic crowns are beautiful. But what surprised me most was how thorough the assessment was — they actually looked at me, not just my teeth."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">RA</div>
+          <div>
+            <div class="name">Renée A.</div>
+            <div class="meta">Cosmetic &amp; restorative patient</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-summary">
+      <div class="review-summary-item">
+        <div class="num">4.8</div>
+        <div>
+          <div class="testimonial-stars" style="margin-bottom: 4px;">
+            <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+            <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+            <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+            <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+            <i data-lucide="star" class="icon-sm" style="fill: currentColor;"></i>
+          </div>
+          <div class="label">Google rating</div>
+        </div>
+      </div>
+      <span class="divider"></span>
+      <div class="review-summary-item">
+        <div class="num">178+</div>
+        <div class="label">Verified<br/>reviews</div>
+      </div>
+      <span class="divider"></span>
+      <div class="review-summary-item">
+        <div class="num">5,000+</div>
+        <div class="label">Patients<br/>treated</div>
+      </div>
+      <span class="divider"></span>
+      <div class="review-summary-item">
+        <div class="num">20+</div>
+        <div class="label">Years<br/>experience</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DOCTOR ── -->
+<section class="section doctor-section" data-screen-label="08 Doctor">
+  <div class="container">
+    <div class="doctor-grid">
+      <div class="doctor-image">
+        <img src="assets/dr-leconte.png" alt="Dr. Leconte, founder of TranZenDental" />
+        <div class="doctor-name-band">
+          <div class="doctor-name">Dr. Leconte</div>
+          <div class="doctor-title">Founder · Holistic &amp; Cosmetic Dentistry</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="eyebrow" style="margin-bottom: 18px;">Doctor &amp; Philosophy</div>
+        <h2 class="h1" style="margin-bottom: 22px;">Advanced dentistry with a personalized philosophy.</h2>
+        <p class="lede">
+          At TranZenDental, we believe dentistry should support both aesthetics and overall wellness. We take time to understand the whole picture before recommending treatment.
+        </p>
+
+        <ul class="doctor-philosophy">
+          <li><i data-lucide="sparkles" class="icon-md"></i><span>Advanced cosmetic dentistry</span></li>
+          <li><i data-lucide="scan-line" class="icon-md"></i><span>Modern digital diagnostics</span></li>
+          <li><i data-lucide="leaf" class="icon-md"></i><span>Biocompatible treatment philosophies</span></li>
+          <li><i data-lucide="ruler" class="icon-md"></i><span>Conservative planning</span></li>
+          <li><i data-lucide="user-check" class="icon-md"></i><span>Patient-centered care</span></li>
+          <li><i data-lucide="heart" class="icon-md"></i><span>Comfort-focused treatment</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="section section-tight" data-screen-label="09 FAQ">
+  <div class="container-narrow">
+    <div class="section-header center">
+      <div class="eyebrow">Frequently Asked</div>
+      <h2 class="h1">Common questions about biocompatible dentistry.</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-q" aria-expanded="true">
+          <span>What is biocompatible dentistry?</span>
+          <span class="faq-icon"><i data-lucide="plus" class="icon-md"></i></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Biocompatible dentistry focuses on using materials and treatment approaches designed to support aesthetics, durability, and patient compatibility — choosing what works in harmony with your body.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Do you offer metal-free restorations?</span>
+          <span class="faq-icon"><i data-lucide="plus" class="icon-md"></i></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. We offer a variety of ceramic and metal-free restorative options — including crowns, inlays, onlays, and zirconia implant alternatives.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Do you remove amalgam fillings?</span>
+          <span class="faq-icon"><i data-lucide="plus" class="icon-md"></i></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. We follow SMART mercury-safe removal protocols for patients choosing to replace old amalgam fillings, designed to minimize exposure during the procedure.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Are ceramic restorations durable?</span>
+          <span class="faq-icon"><i data-lucide="plus" class="icon-md"></i></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Modern ceramic restorations are highly durable while also providing excellent aesthetics. Materials and techniques have advanced significantly over the past decade.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Do you offer sedation?</span>
+          <span class="faq-icon"><i data-lucide="plus" class="icon-md"></i></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. IV sedation options are available for patients who want a more relaxed treatment experience. We discuss the right approach with you during your assessment.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Is this cosmetic dentistry or holistic dentistry?</span>
+          <span class="faq-icon"><i data-lucide="plus" class="icon-md"></i></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Both. Our philosophy integrates aesthetics, function, comfort, and whole-body thinking. You don't have to choose between a beautiful smile and biocompatible care.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section class="final-cta" data-screen-label="10 Final CTA">
+  <div class="container-narrow">
+    <div class="eyebrow on-dark no-line">Ready When You Are</div>
+    <h2 class="h-display">Experience a more modern approach to dentistry.</h2>
+    <p class="sub">Personalized. Biocompatible. Metal-free. Designed around you.</p>
+    <div class="btn-group">
+      <a href="https://dental4.me/tranzendental/1" class="btn btn-primary btn-lg">
+        Book Your Oral-Body Assessment
+        <i data-lucide="arrow-right" class="icon-md btn-arrow"></i>
+      </a>
+      <a href="tel:5616919498" class="btn btn-outline-light btn-lg">
+        <i data-lucide="phone" class="icon-sm"></i>
+        (561) 691-9498
+      </a>
+    </div>
+    <div class="support-line">
+      <i data-lucide="map-pin" class="icon-sm"></i>
+      Conveniently located in Palm Beach County
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="assets/logo.png" class="footer-logo" alt="TranZenDental" />
+        <p class="footer-tag">Holistic, biocompatible, and cosmetic dentistry in North Palm Beach, Florida.</p>
+      </div>
+      <div>
+        <h4>Practice</h4>
+        <ul>
+          <li><a href="#different">Our Approach</a></li>
+          <li><a href="#book">The Assessment</a></li>
+          <li><a href="#">Patient Stories</a></li>
+          <li><a href="#">About Dr. Leconte</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Metal-Free Dentistry</a></li>
+          <li><a href="#">SMART Amalgam Removal</a></li>
+          <li><a href="#">Cosmetic Dentistry</a></li>
+          <li><a href="#">Ozone Therapy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <i data-lucide="map-pin" class="icon-sm"></i>
+          <span>2000 PGA Boulevard #3120<br/>North Palm Beach, FL 33408</span>
+        </div>
+        <div class="footer-contact-item">
+          <i data-lucide="phone" class="icon-sm"></i>
+          <a href="tel:5616919498">(561) 691-9498</a>
+        </div>
+        <div class="footer-contact-item">
+          <i data-lucide="clock" class="icon-sm"></i>
+          <span>Mon–Fri, 8:00 AM – 5:00 PM</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 TranZenDental. All rights reserved.</div>
+      <div>Holistic · Biocompatible · Cosmetic Dentistry</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── STICKY MOBILE CTA ── -->
+<div class="sticky-mobile-cta">
+  <a href="#book" class="btn btn-primary btn-lg">
+    Book Your Assessment
+    <i data-lucide="arrow-right" class="icon-md btn-arrow"></i>
+  </a>
+</div>
+
+<script>
+  // Initialize Lucide icons
+  lucide.createIcons();
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      // Optionally collapse others — keep multi-open for landing page
+      item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+
+  // Subtle fade-in on scroll
+  const fadeEls = document.querySelectorAll('[data-fade]');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(el => io.observe(el));
+  }
+</script>
+
+</body>
+</html>
