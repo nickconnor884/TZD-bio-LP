@@ -134,8 +134,14 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 /* ── HERO ── */
 .hero {
   position: relative; padding-top: 72px; overflow: hidden;
-  background: linear-gradient(180deg, hsl(35, 30%, 97%) 0%, hsl(35, 28%, 94%) 100%);
+  background: url('assets/hero-holistic-bg.jpg') center/cover no-repeat;
 }
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(255,252,248,0.92) 0%, rgba(255,252,248,0.75) 55%, rgba(255,252,248,0.3) 100%);
+  pointer-events: none; z-index: 0;
+}
+.hero .container { position: relative; z-index: 1; }
 .hero-grid {
   display: grid; grid-template-columns: 1.05fr 1fr;
   gap: 64px; align-items: center;
@@ -290,7 +296,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 
 /* ── DIFFERENT (Features) SECTION ── */
 .features-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 1px; background: var(--border-soft);
   border: 1px solid var(--border-soft); border-radius: 4px;
   overflow: hidden;
@@ -318,8 +324,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .feature-card h3 { margin-bottom: 12px; }
 .feature-card p { font-size: 15px; line-height: 1.6; color: var(--fg-soft); }
 
-@media (max-width: 880px) {
-  .features-grid { grid-template-columns: 1fr 1fr; }
+@media (max-width: 1100px) {
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 560px) {
   .features-grid { grid-template-columns: 1fr; }
@@ -734,7 +740,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
         </h1>
 
         <p class="hero-sub">
-          Biocompatible, metal-free, holistic dental care using advanced diagnostics, ceramic restorations, ozone therapy, and personalized treatment planning.
+          Biocompatible, metal-free, holistic dental care using advanced diagnostics, saliva testing, oral microbiome analysis, ceramic restorations, ozone therapy, and personalized treatment planning.
         </p>
         <p class="hero-support">
           For patients seeking a healthier, more aesthetic, and more modern approach to dentistry.
@@ -774,6 +780,10 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
           <div class="hero-trust-item">
             <i data-lucide="user-check" class="icon-md"></i>
             <span>Personalized treatment planning</span>
+          </div>
+          <div class="hero-trust-item">
+            <i data-lucide="test-tubes" class="icon-md"></i>
+            <span>Saliva &amp; microbiome testing</span>
           </div>
         </div>
       </div>
@@ -852,51 +862,65 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
       <div class="eyebrow">What Makes Us Different</div>
       <h2 class="h1">A more advanced and biocompatible approach to dentistry.</h2>
       <p class="lede">
-        Six pillars that define how we practice — each designed around safer materials, smarter diagnostics, and a calmer experience.
+        Eight pillars that define how we practice — each designed around safer materials, smarter diagnostics, microbiome health, and a calmer experience.
       </p>
     </div>
 
     <div class="features-grid">
       <article class="feature-card">
-        <div class="feature-num">01 / 06</div>
+        <div class="feature-num">01 / 08</div>
         <div class="feature-icon"><i data-lucide="gem" class="icon-lg"></i></div>
         <h3 class="h3">Metal-Free Restorations</h3>
         <p>High-quality ceramic and biocompatible materials designed for aesthetics, durability, and a more natural dental experience.</p>
       </article>
 
       <article class="feature-card">
-        <div class="feature-num">02 / 06</div>
+        <div class="feature-num">02 / 08</div>
         <div class="feature-icon"><i data-lucide="shield-check" class="icon-lg"></i></div>
         <h3 class="h3">SMART Amalgam Removal</h3>
         <p>For patients replacing old silver fillings, we follow advanced safety protocols designed to minimize exposure during removal.</p>
       </article>
 
       <article class="feature-card">
-        <div class="feature-num">03 / 06</div>
+        <div class="feature-num">03 / 08</div>
         <div class="feature-icon"><i data-lucide="droplets" class="icon-lg"></i></div>
         <h3 class="h3">Ozone &amp; Biological Approaches</h3>
         <p>We incorporate ozone and modern biological principles to support cleaner, more conservative care.</p>
       </article>
 
       <article class="feature-card">
-        <div class="feature-num">04 / 06</div>
+        <div class="feature-num">04 / 08</div>
         <div class="feature-icon"><i data-lucide="scan-line" class="icon-lg"></i></div>
         <h3 class="h3">3D Diagnostics &amp; Digital Planning</h3>
         <p>Advanced CBCT imaging and digital treatment planning let us create a highly personalized treatment strategy.</p>
       </article>
 
       <article class="feature-card">
-        <div class="feature-num">05 / 06</div>
+        <div class="feature-num">05 / 08</div>
         <div class="feature-icon"><i data-lucide="sparkles" class="icon-lg"></i></div>
         <h3 class="h3">Cosmetic + Holistic Integration</h3>
         <p>Beautiful smiles and whole-body thinking do not have to be separate. We design treatment around both.</p>
       </article>
 
       <article class="feature-card">
-        <div class="feature-num">06 / 06</div>
+        <div class="feature-num">06 / 08</div>
         <div class="feature-icon"><i data-lucide="moon" class="icon-lg"></i></div>
         <h3 class="h3">Sedation &amp; Anxiety Support</h3>
         <p>IV sedation is available for patients who want a calmer, more comfortable experience from start to finish.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-num">07 / 08</div>
+        <div class="feature-icon"><i data-lucide="test-tubes" class="icon-lg"></i></div>
+        <h3 class="h3">Saliva-Based Diagnostics</h3>
+        <p>Saliva testing gives us a window into your systemic health — identifying inflammatory markers, pathogens, and biocompatibility factors before we plan treatment.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-num">08 / 08</div>
+        <div class="feature-icon"><i data-lucide="microscope" class="icon-lg"></i></div>
+        <h3 class="h3">Oral Microbiome Analysis</h3>
+        <p>We assess the balance of bacteria in your mouth to understand root causes of decay, gum disease, and inflammation — and design care that supports a healthier microbial environment.</p>
       </article>
     </div>
   </div>
@@ -1018,6 +1042,16 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
       <div class="service-row">
         <span class="service-num">10</span>
         <span class="service-name">Advanced diagnostics &amp; CBCT imaging</span>
+        <i data-lucide="arrow-up-right" class="icon-md service-arrow"></i>
+      </div>
+      <div class="service-row">
+        <span class="service-num">11</span>
+        <span class="service-name">Saliva-based diagnostic testing</span>
+        <i data-lucide="arrow-up-right" class="icon-md service-arrow"></i>
+      </div>
+      <div class="service-row">
+        <span class="service-num">12</span>
+        <span class="service-name">Oral microbiome analysis</span>
         <i data-lucide="arrow-up-right" class="icon-md service-arrow"></i>
       </div>
     </div>
